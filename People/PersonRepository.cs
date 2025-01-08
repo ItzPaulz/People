@@ -72,4 +72,21 @@ public class PersonRepository
 
         return new List<Person>();
     }
+    public void DeletePerson(int id)
+    {
+        try
+        {
+            Init();
+            var person = conn.Table<Person>().FirstOrDefault(p => p.Id == id);
+            if (person != null)
+            {
+                conn.Delete(person);
+                StatusMessage = $"Paul Larrea ha eliminado el registro de {id} ";
+            }
+        }
+        catch (Exception ex)
+        {
+            StatusMessage = $"Error al eliminar a {id}. Error: {ex.Message}";
+        }
+    }
 }

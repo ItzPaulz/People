@@ -1,37 +1,87 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿ ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="People.MainPage" 
-             BackgroundColor="{DynamicResource Light}">
+             x:Class="People.MainPage"
+             BackgroundColor="MidnightBlue">
 
-    <Grid Padding="5" RowSpacing="5" ColumnSpacing="5"
+    <Grid Padding="10" RowSpacing="10" ColumnSpacing="10"
           RowDefinitions="Auto,Auto,Auto,Auto,*">
 
-        <Entry x:Name="newPerson"
-           Placeholder="Enter name" />
+        <Entry x:Name="PLnewPerson"
+               Placeholder="Introduce un nombre"
+               TextColor="White"
+               BackgroundColor="DarkSlateGray"
+               FontFamily="Arial"
+               Margin="5"/>
 
-        <Button Text="Add Person"
-            Grid.Row="1"
-            Clicked="OnNewButtonClicked" />
+        <Button Text="Añadir Persona"
+                Grid.Row="1"
+                TextColor="White"
+                BackgroundColor="Teal"
+                FontFamily="Arial"
+                Clicked="OnNewButtonClicked"
+                Margin="5" />
 
-        <Label x:Name="statusMessage"
-           TextColor="{StaticResource Primary}"
-           Grid.Row="2" />
+        <Label x:Name="PLstatusMessage"
+               TextColor="LightGray"
+               FontFamily="Arial"
+               Grid.Row="2"
+               Margin="5" />
 
-        <Button Text="Get All People"
-            Grid.Row="3"
-            Clicked="OnGetButtonClicked" />
+        <Button Text="Mostrar Personas"
+                Grid.Row="3"
+                TextColor="White"
+                BackgroundColor="Teal"
+                FontFamily="Arial"
+                Clicked="OnGetButtonClicked"
+                Margin="5" />
 
-        <CollectionView x:Name="peopleList" Grid.Row="4">
+        <CollectionView x:Name="PLpeopleList" Grid.Row="4" BackgroundColor="DarkSlateGray"
+                        Margin="5">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Grid ColumnDefinitions="*,2*">
-                        <Label Text="{Binding Id}" TextColor="{StaticResource Primary}"/>
-                        <Label Grid.Column="1" Text="{Binding Name}" TextColor="{StaticResource Primary}"/>
+                    <Grid ColumnDefinitions="*,2*" Padding="10">
+                        <Label Text="{Binding Id}" TextColor="White" FontFamily="Arial"/>
+                        <Label Grid.Column="1" Text="{Binding Name}" TextColor="White" FontFamily="Arial"/>
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
+
+        <Frame Grid.Row="5"
+               BackgroundColor="Teal"
+               CornerRadius="20"
+               Margin="10"
+               Padding="15"
+               VerticalOptions="End"
+               HeightRequest="100">
+
+            <Grid ColumnDefinitions="Auto,*,Auto">
+                <Image x:Name="PLImagen"
+                       Source="alone.png"
+                       HeightRequest="80"
+                       WidthRequest="80"
+                       Aspect="AspectFill"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Start"
+                       Margin="5" />
+
+                <StackLayout Grid.Column="1"
+                             VerticalOptions="Center"
+                             Spacing="5">
+                    <Label x:Name="PLNombre"
+                           Text="Paul Larrea"
+                           FontSize="20"
+                           TextColor="White"
+                           FontFamily="Arial" />
+                    <Label x:Name="PLEdad"
+                           Text="20 años"
+                           FontSize="16"
+                           TextColor="White"
+                           FontFamily="Arial" />
+                </StackLayout>
+            </Grid>
+        </Frame>
 
     </Grid>
 
