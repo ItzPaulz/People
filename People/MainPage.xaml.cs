@@ -5,27 +5,36 @@ namespace People;
 
 public partial class MainPage : ContentPage
 {
+    public MainPage()
+    {
+        InitializeComponent();
+    }
 
-	public MainPage()
-	{
-		InitializeComponent();
-	}
-
+    // Método para agregar una nueva persona
     public void OnNewButtonClicked(object sender, EventArgs args)
     {
-        statusMessage.Text = "";
+        // Limpiar el mensaje de estado
+        PLstatusMessage.Text = "";
 
-        App.PersonRepo.AddNewPerson(newPerson.Text);
-        statusMessage.Text = App.PersonRepo.StatusMessage;
+        // Llamar al método para agregar una nueva persona
+        App.PersonRepo.AddNewPerson(PLnewPerson.Text);
+
+        // Mostrar el mensaje de estado
+        PLstatusMessage.Text = App.PersonRepo.StatusMessage;
     }
 
+    // Método para mostrar la lista de personas
     public void OnGetButtonClicked(object sender, EventArgs args)
     {
-        statusMessage.Text = "";
+        // Limpiar el mensaje de estado
+        PLstatusMessage.Text = "";
 
+        // Obtener la lista de personas desde el repositorio
         List<Person> people = App.PersonRepo.GetAllPeople();
-        peopleList.ItemsSource = people;
-    }
 
+        // Asignar la lista al CollectionView
+        PLpeopleList.ItemsSource = people;
+    }
 }
+
 
